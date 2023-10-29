@@ -24,7 +24,10 @@ SOFTWARE.
 
 import disnake
 import configparser
+import os
+from dotenv import load_dotenv
 
+load_dotenv()
 
 class Config:
     def __init__(self, directory):
@@ -35,7 +38,8 @@ class Config:
     def load(self):
         # TODO Expose as public attributes
         self.config.read(f"{self.directory}/config.ini")
-        self.token = str(self.config.get("server", "token"))
+        # self.token = str(self.config.get("server", "token"))
+        self.token = os.environ.get('TOKEN')
         self.botname = str(self.config.get("server", "name", fallback="Reaction Light"))
         self.botcolour = disnake.Colour(int(self.config.get("server", "colour", fallback="0xffff00"), 16))
         system_channel = self.config.get("server", "system_channel", fallback=None)
