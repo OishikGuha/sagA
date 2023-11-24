@@ -586,7 +586,7 @@ class Message(commands.Cog):
         inter,
         channel: disnake.TextChannel = commands.Param(description=static_response.get("message-reaction-option-channel")),
         action: str = commands.Param(
-            description=static_response.get("message-reaction-option-action"), choices=("add", "remove")
+            description=static_response.get("message-reaction-option-action"), choices={"add", "remove"}
         ),
         number: int = commands.Param(description=static_response.get("message-reaction-option-number")),
         reaction: str = commands.Param(description=static_response.get("message-reaction-option-reaction"), default=None),
